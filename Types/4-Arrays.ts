@@ -1,6 +1,6 @@
 const activeUsers: [] = [];
 // if we try to add a string to the array, we get an error
-activeUsers.push("ChikenFace"); // because the array is empty, always, we can't add anything to it
+// activeUsers.push("ChikenFace"); // because the array is empty, always, we can't add anything to it
 
 /*
     Array Types
@@ -14,7 +14,7 @@ activeUsers2.push("ChikenFace"); // Nice!
 const ageList: number[] = [27, 36, 45, 54, 63, 72, 81, 90];
 ageList[0] = 99; // OK
 ageList.push(100); // OK
-ageList.push("100"); // Error
+// ageList.push("100"); // Error
 
 /* 
     Alternative Syntax
