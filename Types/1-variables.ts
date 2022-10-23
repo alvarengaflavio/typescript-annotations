@@ -1,6 +1,9 @@
-/*  Assigning a basic type to a variable is easy - just add :Type after the variable name!
+/*  
+    VARIABLES
+    Assigning a basic type to a variable is easy - just add :Type after the variable name!
     Also called a type annotation, this tells TypeScript what type of data the variable will hold.
 */
+
 // primitive types
 const myAwsomeVariable: string = "Hello World"; // string
 const myNumber: number = 1; // number
@@ -8,13 +11,13 @@ const myBoolean: boolean = true; // boolean
 
 /* Type Inference */
 let tvShow = "The Office"; // tvShow is inferred to be a string
-tvShow = 42; // Error: Type 'number' is not assignable to type 'string'
+// tvShow = 42; // Error: Type 'number' is not assignable to type 'string'
 
 /* ANY */
 // If you don't know the type of a variable, you can use the any type.
 let myVariable: any = "Hello World";
 myVariable = 42; // No error
-myVariable = myFunction("Hello World");
+// myVariable = myFunction("Hello World");
 myVariable();
 myVariable.toUpperCase(); // No error
 
