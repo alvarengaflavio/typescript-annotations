@@ -82,7 +82,3 @@ function gameLoop(): never {
     console.log("GAME LOOP INFINITE");
   }
 }
-
-/*  Function Overloads 
-    You can define multiple function signatures for the same function. 
-*/
