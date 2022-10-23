@@ -25,19 +25,19 @@ console.log(printDog(dog));
     Interfaces are declared using PascalCase.
     Interfaces are used by adding the interface name after the variable name.
 */
-interface Dog {
+interface Dogo {
   name: string;
   breed: string;
   age: number;
 }
 
-const dog2: Dog = {
+const dog2: Dogo = {
   name: "Bela",
   breed: "German Shepherd",
   age: 6,
-};
+}; // creating a new Dog instance
 
-const printDog2 = (dog: Dog): string => {
+const printDog2 = (dog: Dogo): string => {
   return `Hello ${dog.name}, you are a ${dog.breed} and ${dog.age} years old!`;
 };
 
@@ -63,7 +63,7 @@ function printChicken(singer: { first: string; last: string }): void {
 }
 
 printChicken({ first: "Chiken", last: "Face" }); // Chiken Face
-printChicken({ first: "Chiken", last: "Face", age: 76 }); // This will alert an error because the interface does not allow the age property.
+//printChicken({ first: "Chiken", last: "Face", age: 76 }); // This will alert an error because the interface does not allow the age property.
 
 const oldChiken = { first: "Chiken", last: "Face", age: 76 }; // But if you assign the object to a variable, it will not alert an error.
 printChicken(oldChiken); // Chiken Face
@@ -238,7 +238,7 @@ let myLocation3: MyLocation3 = {
   coordinates: { x: 10, y: 20 },
 };
 
-myLocation3.name = "Work"; // This will alert an error because the name property is readonly.
+//myLocation3.name = "Work"; // This will alert an error because the name property is readonly.
 
 /*
     Type Aliases vs Interfaces
@@ -268,69 +268,3 @@ interface MyLocation5 {
 type MyLocation6 = MyLocation4 & { address: string }; // This is valid
 interface MyLocation7 extends MyLocation5 {} // This is valid
 interface MyLocation9 {} // This is valid
-
-/*
-    Union Types
-    Union types are a way to combine multiple types into one.
-    Union types are declared using the pipe symbol (|).
-    Union types are declared outside of the function body.
-*/
-
-type MyDog = {
-  name: string;
-  breed: string;
-  age: number;
-  sound: "woof";
-};
-
-type MyCat = {
-  name: string;
-  breed: string;
-  age: number;
-  sound: "meow";
-};
-
-type MyPet = MyDog | MyCat;
-
-function makeSound(pet: MyPet): void {
-  console.log(`${pet.name} says ${pet.sound}`);
-}
-
-let myDog: MyPet = {
-  name: "Bela",
-  breed: "German Shepherd",
-  age: 6,
-  sound: "woof",
-};
-
-let myCat: MyPet = {
-  name: "Esmeralda",
-  breed: "Vira-lata",
-  age: 4,
-  sound: "meow",
-};
-
-makeSound(myDog); // Rex says woof
-makeSound(myCat); // Fluffy says meow
-
-/*
-    Intersection Types
-    Intersection types are a way to combine multiple types into one.
-    Intersection types are declared using the ampersand symbol (&).
-    Intersection types are declared outside of the function body.
-*/
-
-type Circle = {
-  radius: number;
-};
-
-type Colorful = {
-  color: string;
-};
-
-type CircleWithColor = Circle & Colorful;
-
-const happyFace: CircleWithColor = {
-  radius: 10,
-  color: "yellow",
-};
