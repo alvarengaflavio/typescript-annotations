@@ -140,7 +140,7 @@ makeSound2(myCat2); // Esmeralda says meow
   Use the pipe symbol inside a parenthesis to declare an array union type. (string | number)[]
   Array union types are declared outside of the function body. 
 */
-let myArray: (number | string)[] = [1, 2, 3, "4", "5", "6"]; // OK
+let myMixedArray: (number | string)[] = [1, 2, 3, "4", "5", "6"]; // OK
 
 let myWrongArray: number | string[] = 13; // [1, 2, 3, "4", "5", "6"]; (wrong) - this is not an array union type, this is an array of union types, which is not the same thing. Can be a number OR an array of strings.
 

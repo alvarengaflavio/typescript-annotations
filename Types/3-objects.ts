@@ -116,7 +116,8 @@ function doubleCoordinates2(coordinates: Coordinates): Coordinates {
   return { x: coordinates.x * 2, y: coordinates.y * 2 };
 }
 
-/*  Anonymous Types
+/*  
+    Anonymous Types
     Anonymous types are types that are declared inline.
     Anonymous types are declared using the type keyword.
     Anonymous types are declared inside of the function body.

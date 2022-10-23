@@ -1,4 +1,5 @@
-/*  Function Parameters 
+/*  
+    Function Parameters 
     You can also assign a type to a function parameter.
     This is called a parameter annotation.
 */
@@ -40,7 +41,8 @@ const addNumbers = (a: number, b: number): number => {
 
 addNumbers(1, 2); // 3
 
-/*  A function can return multiple types using the | operator. 
+/*  
+    A function can return multiple types using the | operator. 
     This is called a union type. A union type can be inferred by TypeScript. 
 */
 function rando(num: number): string | number {
@@ -50,7 +52,8 @@ function rando(num: number): string | number {
   return num;
 }
 
-/*  Anonymous Functions
+/*  
+    Anonymous Functions
     You can also assign a type to an anonymous function.
     This is called a function type annotation.
 */
@@ -62,14 +65,16 @@ const myAnonymousFunction: (parameter: string) => string = (parameter) => {
   return parameter;
 };
 
-/* The Void Type
+/* 
+    The Void Type
     The void type is used when a function does not return a value.
 */
 function sayHello(): void {
   console.log("Hello");
 }
 
-/* The Never Type
+/* 
+    The Never Type
     The never type is used when a function will never return a value.
     This is useful for functions that throw errors or infinite loops.
 */
