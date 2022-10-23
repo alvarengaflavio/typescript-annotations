@@ -151,3 +151,186 @@ function printCoordinates3(coordinates: Coordinates3): void {
 }
 
 printCoordinates3({ x: 10, y: 20 }); // x: 10, y: 20
+
+/*
+    Nested Object Types
+    You can also nest object types.
+*/
+
+type MyLocation = {
+  name: string;
+  coordinates: Coordinates;
+};
+
+let myLocation: MyLocation = {
+  name: "Home",
+  coordinates: { x: 10, y: 20 },
+};
+
+function printMyLocation(location: MyLocation): void {
+  console.log(`My location is ${location.name}`);
+  console.log(`x: ${location.coordinates.x}, y: ${location.coordinates.y}`);
+}
+
+printMyLocation(myLocation); // My location is Home, x: 10, y: 20
+
+/*
+    Optional Properties
+    You can also make properties optional.
+    This is done by adding a question mark after the property name.
+*/
+
+type MyLocation2 = {
+  name: string;
+  coordinates: Coordinates;
+  description?: string;
+};
+
+/*  
+    More complex example
+*/
+type Song = {
+  title: string;
+  artist: string;
+  numStreams: number;
+  album?: string;
+  credits: {
+    producer: string;
+    writer: string;
+  };
+};
+
+function calculatePayout(song: Song): number {
+  return song.numStreams * 0.0033;
+}
+
+function printSong(song: Song): void {
+  console.log(`${song.title} by ${song.artist}`);
+}
+
+const mySong: Song = {
+  title: "Rats and vermin's",
+  artist: "Bardin Goreksson",
+  numStreams: 563120,
+  credits: {
+    producer: "Fatshark",
+    writer: "Fatshark and Bardin Goreksson",
+  },
+};
+
+printSong(mySong); // Rats and vermin's by Bardin Goreksson
+calculatePayout(mySong); // 1865.296
+
+/*
+    Readonly Properties
+    You can also make properties readonly.
+    This is done by adding the readonly keyword before the property name.
+*/
+
+type MyLocation3 = {
+  readonly name: string;
+  coordinates: Coordinates;
+  description?: string;
+};
+
+let myLocation3: MyLocation3 = {
+  name: "Home",
+  coordinates: { x: 10, y: 20 },
+};
+
+myLocation3.name = "Work"; // This will alert an error because the name property is readonly.
+
+/*
+    Type Aliases vs Interfaces
+
+    Type aliases and interfaces are very similar.
+    They both allow you to define a type.
+    They both allow you to define a type that can be used in multiple places.
+    They both can be used to define an object, function, union, tuple or generic type.
+
+    The main difference between type aliases and interfaces is that type aliases cannot be extended or implemented from.
+    This means that you cannot extend or implement from a type alias.
+    This means that you cannot use a type alias in an extends or implements clause.
+*/
+
+type MyLocation4 = {
+  name: string;
+  coordinates: Coordinates;
+  description?: string;
+};
+
+interface MyLocation5 {
+  name: string;
+  coordinates: Coordinates;
+  description?: string;
+}
+
+type MyLocation6 = MyLocation4 & { address: string }; // This is valid
+interface MyLocation7 extends MyLocation5 {} // This is valid
+interface MyLocation9 {} // This is valid
+
+/*
+    Union Types
+    Union types are a way to combine multiple types into one.
+    Union types are declared using the pipe symbol (|).
+    Union types are declared outside of the function body.
+*/
+
+type MyDog = {
+  name: string;
+  breed: string;
+  age: number;
+  sound: "woof";
+};
+
+type MyCat = {
+  name: string;
+  breed: string;
+  age: number;
+  sound: "meow";
+};
+
+type MyPet = MyDog | MyCat;
+
+function makeSound(pet: MyPet): void {
+  console.log(`${pet.name} says ${pet.sound}`);
+}
+
+let myDog: MyPet = {
+  name: "Bela",
+  breed: "German Shepherd",
+  age: 6,
+  sound: "woof",
+};
+
+let myCat: MyPet = {
+  name: "Esmeralda",
+  breed: "Vira-lata",
+  age: 4,
+  sound: "meow",
+};
+
+makeSound(myDog); // Rex says woof
+makeSound(myCat); // Fluffy says meow
+
+/*
+    Intersection Types
+    Intersection types are a way to combine multiple types into one.
+    Intersection types are declared using the ampersand symbol (&).
+    Intersection types are declared outside of the function body.
+*/
+
+type Circle = {
+  radius: number;
+};
+
+type Colorful = {
+  color: string;
+};
+
+type CircleWithColor = Circle & Colorful;
+
+const happyFace: CircleWithColor = {
+  radius: 10,
+  color: "yellow",
+};
