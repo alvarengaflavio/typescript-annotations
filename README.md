@@ -13,4 +13,6 @@
 -[3] Configuration to go `./Configuration`  
  -[3.1] Open Readme `./readme.ts`  
  -[3.2] Open index `./src/index.ts` and follow the instructions  
--[4] Mini Project `path`
+-[4] Mini Project `./miniproject`  
+ -[4.1] Open Readme `./readme.ts`  
+ -[4.2] Start a new project and reopen the vscode and that folder.
