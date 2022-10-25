@@ -228,3 +228,6 @@ interface MyLocation5 {
 type MyLocation6 = MyLocation4 & { address: string }; // type alias and interface can do this
 interface MyLocation7 extends MyLocation5 {} // only interface can do this
 interface MyLocation9 {} // only interface can do this
+
+// -------------------------------------------------------- //
+// Path: /src/advanced-types.ts
