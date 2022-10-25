@@ -240,32 +240,3 @@ let myLocation3: MyLocation3 = {
 };
 
 //myLocation3.name = "Work"; // This will alert an error because the name property is readonly.
-
-/*
-    Type Aliases vs Interfaces
-
-    Type aliases and interfaces are very similar.
-    They both allow you to define a type.
-    They both allow you to define a type that can be used in multiple places.
-    They both can be used to define an object, function, union, tuple or generic type.
-
-    The main difference between type aliases and interfaces is that type aliases cannot be extended or implemented from.
-    This means that you cannot extend or implement from a type alias.
-    This means that you cannot use a type alias in an extends or implements clause.
-*/
-
-type MyLocation4 = {
-  name: string;
-  coordinates: Coordinates;
-  description?: string;
-};
-
-interface MyLocation5 {
-  name: string;
-  coordinates: Coordinates;
-  description?: string;
-}
-
-type MyLocation6 = MyLocation4 & { address: string }; // This is valid
-interface MyLocation7 extends MyLocation5 {} // This is valid
-interface MyLocation9 {} // This is valid
