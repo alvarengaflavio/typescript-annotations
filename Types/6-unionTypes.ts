@@ -188,4 +188,4 @@ today = "Tuesday"; // OK
 // today = "Foo"; // (wrong) - Foo is not a valid literal type
 
 // -------------------------------------------------------- //
-// Path: Types\7-typeAliases.ts
+// Path: Types\7-TuplesAndEnums.ts

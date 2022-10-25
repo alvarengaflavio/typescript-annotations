@@ -19,3 +19,6 @@ const happyFace: CircleWithColor = {
   radius: 10,
   color: "yellow",
 };
+
+// -------------------------------------------------------- //
+// Path: Types\6-unionTypes.ts

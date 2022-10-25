@@ -87,3 +87,6 @@ function gameLoop(): never {
     console.log("GAME LOOP INFINITE");
   }
 }
+
+// -------------------------------------------------------- //
+// Path: Types\3-objects.ts

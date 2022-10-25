@@ -35,3 +35,6 @@ for (let movie of movies) {
 const myArray: number[] = [1, 2, 3]; // number[]
 const myArray2: Array<number> = [1, 2, 3]; // Array<number>
 const myObject: { [key: string]: number } = { a: 1, b: 2, c: 3 }; // { [key: string]: number }
+
+// -------------------------------------------------------- //
+// Path: Types\2-functions.ts

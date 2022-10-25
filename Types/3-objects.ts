@@ -240,3 +240,6 @@ let myLocation3: MyLocation3 = {
 };
 
 //myLocation3.name = "Work"; // This will alert an error because the name property is readonly.
+
+// -------------------------------------------------------- //
+// Path: Types\4.Arrays.ts

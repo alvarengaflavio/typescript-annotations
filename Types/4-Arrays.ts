@@ -80,3 +80,6 @@ const threeDimensionalArray: number[][][] = [
     [1, 0, 1],
   ],
 ]; // an array of arrays of arrays of numbers (3D) - 3x3x3 - 3 cubes of 3x3
+
+// -------------------------------------------------------- //
+// Path: Types\5-intersectionTypes.ts
