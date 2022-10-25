@@ -1,0 +1,11 @@
+{
+  "name": "miniproject",
+  "version": "1.0.0",
+  "description": "This will allow us to show some functionality of typescript and explain some features in practice.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "alva",
+  "license": "MIT"
+}
