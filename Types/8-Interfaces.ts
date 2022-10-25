@@ -212,6 +212,7 @@ const antonio: Engineer = {
     This means that you cannot extend or implement from a type alias.
     This means that you cannot use a type alias in an extends or implements clause.
     ----------------------------------------------------------------------------------  */
+import { Coordinates } from "./3-objects"; // IDK why this is necessary only here...
 
 type MyLocation4 = {
   name: string;
