@@ -101,7 +101,7 @@ function doubleCoordinates(coordinates: { x: number; y: number }): {
     Instead of declaring the type of the coordinates object twice, you can use a type alias. 
     This will make the code easier to read and maintain.
 */
-type Coordinates = { x: number; y: number };
+export type Coordinates = { x: number; y: number };
 
 let coordinates2: Coordinates = {
   x: 10,
