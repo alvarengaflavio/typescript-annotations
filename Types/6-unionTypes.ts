@@ -45,8 +45,8 @@ let myCat: MyPet = {
   sound: "meow",
 };
 
-makeSound(myDog); // Rex says woof
-makeSound(myCat); // Fluffy says meow
+makeSound(myDog); // Bela says woof
+makeSound(myCat); // Esmeralda says meow
 
 // -------------------------------------------------------- //
 // a litle strange union type example
