@@ -86,16 +86,31 @@ class Player {
   }
   loseLife() {
     this.#lives -= 1;
+
+    if (this.#lives === 0) {
+      this.#gameOver();
+    }
   }
   getScore() {
-    // Getter method
     return this.#score;
   }
-  updateScore(score) {
-    // Setter method
-    this.#score += score;
+  setScore(points) {
+    this.#score += points;
+  }
+
+  #gameOver() {
+    // Private method
+    console.log("Game Over!");
   }
 }
+
+const player4 = new Player("Mansus", "Ranger");
+player4.introduce(); // Hi I am Mansus, I'm a Ranger
+console.log(player4); // Player {name: "Mansus", type: "Ranger", #score: 0, #lives: 3}
+player4.setScore(100); // Mansus got 100 points
+console.log(player4.getScore()); // 100
+
+// We can also add private methods to a class. This allows us to create methods that are not accessible outside of the class. Private methods begin with a # symbol. Like #gameOver() in the example above.
 
 /*
             Getters and Setters
@@ -103,4 +118,51 @@ class Player {
     -   Getters and setters are methods that get and set the properties of an object. They are used to control access to an object.
     -   Getters and setters are useful for performing actions on properties when they are accessed or set.
     -   Getters and setters are defined using the get and set keywords.
+*/
+
+class Player {
+  #life = 3;
+  constructor(name, type) {
+    this.name = name;
+    this.type = type;
+  }
+  introduce() {
+    console.log(`Hi I am ${this.name}, I'm a ${this.type}`);
+  }
+
+  // Now we can use the get and set keywords to create getter and setter methods for the #life property
+
+  get life() {
+    // Getter method
+    return this.#life;
+  }
+
+  set life(life) {
+    // Setter method
+    this.#life = life;
+  }
+
+  loseLife(damage) {
+    const newlife = this.life - damage;
+    newlife > 0 ? (this.life = newlife) : this.gameOver(); // this.life automatically calls the setter method
+  }
+
+  #gameOver() {
+    console.log("Game Over!");
+  }
+}
+
+const player5 = new Player("Moirinas", "Archer");
+player5.introduce(); // Hi I am Moirinas, I'm a Archer
+console.log(player5); // Player {name: "Moirinas", type: "Archer", #life: 3}
+player5.loseLife(2); // Moirinas lost 2 life
+console.log(player5); // Player {name: "Moirinas", type: "Archer", #life: 1}
+player5.loseLife(2); // Game Over!
+
+/*
+            Static Fields and Methods
+
+    -   Static fields and methods are properties and methods that are attached to the class itself, not the instances of the class.
+    -   Static fields and methods are useful for creating utility functions for a class.
+    -   Static fields and methods are defined using the static keyword.
 */
