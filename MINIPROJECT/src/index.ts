@@ -4,9 +4,10 @@ interface Todo {
   complete: boolean;
 }
 
-const todos: Todo[] = []; // array of Todo objects
+const todos: Todo[] = loadTodos(); // array of Todo objects
 
 const btn = <HTMLButtonElement>document.querySelector("#btn"); // Type: HTMLButtonElement
+const btnClear = <HTMLButtonElement>document.querySelector("#btn-clear"); // Type: HTMLButtonElement
 const input = document.querySelector("#todoinput") as HTMLInputElement; // Type: HTMLInputElement
 const form = document.querySelector("form")!; // Type: HTMLFormElement
 const list = document.querySelector("#todolist") as HTMLUListElement; // Type: HTMLUListElement
@@ -20,15 +21,29 @@ const list = document.querySelector("#todolist") as HTMLUListElement; // Type: H
 
 // MINI PROJECT TODO LIST
 
+function loadTodos(): Todo[] {
+  const todosJson = localStorage.getItem("todos");
+
+  if (todosJson === null) return [];
+
+  const todosList = JSON.parse(todosJson) as Todo[];
+  return todosList;
+}
+
+function renderTodos(todosList: Todo[]): void {
+  todosList.forEach((todo) => createTodo(todo));
+}
+
 function handleSubmit(e: SubmitEvent) {
   e.preventDefault();
   const newTodo: Todo = {
     text: input.value,
     complete: false,
   };
-  createTodo(newTodo);
   todos.push(newTodo);
+  createTodo(newTodo);
 
+  localStorage.setItem("todos", JSON.stringify(todos));
   input.value = "";
 }
 
@@ -42,4 +57,12 @@ function createTodo(todo: Todo) {
   list.appendChild(newLi);
 }
 
+function clearTodos() {
+  localStorage.clear();
+  list.innerHTML = "";
+}
+
 form.addEventListener("submit", handleSubmit); // no error
+btnClear.addEventListener("click", clearTodos); // no error
+
+renderTodos(todos);
