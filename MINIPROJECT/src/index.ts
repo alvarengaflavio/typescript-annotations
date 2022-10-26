@@ -1,4 +1,10 @@
 // read the README for learn about typescript and the DOM types.
+interface Todo {
+  text: string;
+  complete: boolean;
+}
+
+const todos: Todo[] = []; // array of Todo objects
 
 const btn = <HTMLButtonElement>document.querySelector("#btn"); // Type: HTMLButtonElement
 const input = document.querySelector("#todoinput") as HTMLInputElement; // Type: HTMLInputElement
@@ -12,18 +18,28 @@ const list = document.querySelector("#todolist") as HTMLUListElement; // Type: H
 //   input.value = "";
 // }); // no error
 
+// MINI PROJECT TODO LIST
+
 function handleSubmit(e: SubmitEvent) {
   e.preventDefault();
-  const newTodo = input.value;
+  const newTodo: Todo = {
+    text: input.value,
+    complete: false,
+  };
+  createTodo(newTodo);
+  todos.push(newTodo);
+
+  input.value = "";
+}
+
+function createTodo(todo: Todo) {
   const newLi = document.createElement("li");
   const checkbox = document.createElement("input");
   checkbox.type = "checkbox";
 
-  newLi.append(newTodo);
+  newLi.append(todo.text);
   newLi.append(checkbox);
   list.appendChild(newLi);
-
-  input.value = "";
 }
 
 form.addEventListener("submit", handleSubmit); // no error
