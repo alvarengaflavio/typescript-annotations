@@ -25,20 +25,29 @@ function handleSubmit(e) {
     e.preventDefault();
     const newTodo = {
         text: input.value,
-        complete: false,
+        completed: false,
     };
     todos.push(newTodo);
     createTodo(newTodo);
-    localStorage.setItem("todos", JSON.stringify(todos));
+    saveTodos();
     input.value = "";
 }
 function createTodo(todo) {
     const newLi = document.createElement("li");
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
+    todo.completed && (checkbox.checked = true);
+    checkbox.addEventListener("change", function () {
+        todo.completed = checkbox.checked;
+        console.log(checkbox.checked);
+        saveTodos();
+    }); // no error
     newLi.append(todo.text);
     newLi.append(checkbox);
     list.appendChild(newLi);
+}
+function saveTodos() {
+    localStorage.setItem("todos", JSON.stringify(todos));
 }
 function clearTodos() {
     localStorage.clear();
