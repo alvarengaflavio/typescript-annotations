@@ -166,3 +166,59 @@ player5.loseLife(2); // Game Over!
     -   Static fields and methods are useful for creating utility functions for a class.
     -   Static fields and methods are defined using the static keyword.
 */
+
+class Player {
+  static maxLife = 3; // Static field
+  #life = 3;
+
+  constructor(name, type) {
+    this.name = name;
+    this.type = type;
+  }
+  introduce() {
+    console.log(`Hi I am ${this.name}, I'm a ${this.type}`);
+  }
+
+  /**
+   * @param {number} life
+   */ // this is a JSDoc comment. It is here only to help us with the intellisense in VS Code.
+  set life(life) {
+    this.#life = life;
+  }
+
+  changeLife(amount) {
+    const newlife = this.life + amount;
+
+    newlife > maxLife
+      ? (this.life = maxLife)
+      : newlife > 0
+      ? (this.life = newlife)
+      : gameOver();
+    // We can use the static field maxLife in the class
+    // And call the static method gameOver()
+  }
+
+  // Now we can use the static keyword to create static methods
+  static gameOver() {
+    // Static method
+    console.log("Game Over!");
+  }
+}
+
+const player6 = new Player("Arlindo Cross", "Paladin");
+player6.introduce(); // Hi I am Arlindo Cross, I'm a Paladin
+console.log(player6); // Player {name: "Arlindo Cross", type: "Paladin", #life: 3}
+player6.changeLife(-2); // Arlindo Cross lost 2 life
+console.log(player6); // Player {name: "Arlindo Cross", type: "Paladin", #life: 1}
+player6.changeLife(5); // Arlindo Cross gained "5" life
+console.log(player6); // Player {name: "Arlindo Cross", type: "Paladin", #life: 3}
+player6.changeLife(-3); // Game Over!
+
+/*
+            Inheritance
+
+    -   Inheritance is a way to create a new class from an existing class.
+    -   The new class is called a subclass, and the existing class is called the superclass.
+    -   The subclass inherits all of the properties and methods of the superclass.
+    -   We can use the extends keyword to create a subclass.
+*/
