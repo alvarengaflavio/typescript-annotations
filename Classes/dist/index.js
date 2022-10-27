@@ -54,3 +54,28 @@ class Player2 {
 const player2 = new Player2("ChickenFace", "Warrior", 1);
 player2.logDetails(); // Player ChickenFace is a Warrior and is level 1
 // player2.name = "DuckFace"; // error: Cannot assign to 'name' because it is a read-only property.
+/*  -----------------------------------------------------------------------------------------------------
+                                    Public and Private
+
+    -   By default, all members of a class are public.
+    -   We can also mark a member of a class as private.
+    -   Private members are only visible to other members of the same class.
+    -   A public member can be accessed from anywhere, including from outside of the class.
+    -   A private member can only be accessed by other members of the same class.
+    -   Private members are often used to hide the implementation details of a class.
+
+    ----------------------------------------------------------------------------------------------------- */
+class Player3 {
+    constructor(name, type, level) {
+        this.score = 0;
+        this.name = name;
+        this.type = type;
+        this.level = level;
+    }
+    logDetails() {
+        console.log(`Player ${this.name} is a ${this.type} and is level ${this.level}`);
+    }
+}
+const player3 = new Player3("ChickenFace", "Warrior", 1);
+player3.logDetails(); // Player ChickenFace is a Warrior and is level 1
+// player3.type = "Mage"; // error: Property 'type' is private and only accessible within class 'Player3'.
