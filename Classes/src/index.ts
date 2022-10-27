@@ -30,6 +30,7 @@ class Player {
   name: string;
   type: string; // player class
   level: number;
+  score: number = 0; // the score is inferred to be a number and is already set to 0 (i explicit set to :number to be more explicit)
 
   constructor(name: string, type: string, level: number) {
     //1.1 we can define a constructor function that will be called when we create a new instance of the class
@@ -48,3 +49,27 @@ class Player {
 
 const player1 = new Player("ChickenFace", "Warrior", 1); //1.10 we can pass arguments to the constructor function
 player1.logDetails(); // Player ChickenFace is a Warrior and is level 1
+
+// In typescript we can define a property to be readonly. This property can only be set once and cannot be changed later on.
+class Player2 {
+  readonly name: string; // name and type canot be changed after the constructor function is called
+  readonly type: string;
+  level: number;
+  score: number = 0;
+
+  constructor(name: string, type: string, level: number) {
+    this.name = name;
+    this.type = type;
+    this.level = level;
+  }
+
+  logDetails(): void {
+    console.log(
+      `Player ${this.name} is a ${this.type} and is level ${this.level}`
+    );
+  }
+}
+
+const player2 = new Player2("ChickenFace", "Warrior", 1);
+player2.logDetails(); // Player ChickenFace is a Warrior and is level 1
+// player2.name = "DuckFace"; // error: Cannot assign to 'name' because it is a read-only property.
