@@ -14,7 +14,7 @@
    4.1. Open Readme `./Configuration/readme.ts`  
    4.2 Open index `./Configuration/src/index.ts` and follow the instructions
 5. Mini Project `./MINIPROJECT`  
-   4.1 Open Readme `./MINIPROJECT/readme.ts`  
+   4.1 Open Readme `./MINIPROJECT/readme.md`  
    4.2 Start a new project and reopen the vscode and that folder.
 6. Classes `./Classes`  
-   6.1 adasd asdas `./Classes/classes.ts`
+   6.1 Open Readme `./Classes/README.md`
