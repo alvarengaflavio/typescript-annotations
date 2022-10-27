@@ -1,6 +1,6 @@
 # Type Script Guide for Dummies
 
-1. Basics.ts
+1. Basics `basics.ts`
 2. Types `./Types`  
    2.3 Variables `./Types/1-variables.ts`  
    2.4 Functions `./Types/2-functions.ts`  
