@@ -8,7 +8,7 @@
    1.6 Arrays `./Types/4-arrays.ts`  
    1.7 Intersection Types `./Types/5-intersectionTypes.ts`  
    1.8 Union Types `./Types/6-unionTypes.ts`  
-   1.9 Tuples and Enums `./Types/7-TuplesAndEnums.ts`
+   1.9 Tuples and Enums `./Types/7-TuplesAndEnums.ts`  
    1.10 Interfaces `./Types/8-interfaces.ts`
 2. Configuration `./Configuration`  
    2.1. Open Readme `./Configuration/readme.ts`  
