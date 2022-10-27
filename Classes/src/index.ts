@@ -154,42 +154,32 @@ class Player5 {
     public name: string,
     private type: string,
     public level: number,
-    public score: number = 0
+    private xp: number = 0 // private - can only be called from within the class
   ) {}
 
-  logDetails(): void {
-    console.log(
-      `Player ${this.name} is a ${this.type} and is level ${this.level}`
-    );
-  }
+  get details(): string {
+    return `Player ${this.name} is a ${this.type} and is level ${this.level}`;
+  } // getter - we can call this method as a property
 
-  get getScore(): number {
-    return this.score;
-  }
+  get getEXP(): number {
+    return this.xp;
+  } // getter - we can access the score property by calling the getter
 
-  set setScore(score: number) {
-    this.score = score;
-  }
+  set setXP(experience: number) {
+    this.xp += experience;
+  } // setter - we can set the score property by calling the setter
 }
 
 const player5 = new Player5("ChickenFace", "Warrior", 1);
-player5.logDetails(); // Player ChickenFace is a Warrior and is level 1
-console.log(player5.getScore); // 0
-player5.setScore = 100;
-console.log(player5.getScore); // 100
+console.log(player5.details); // Player ChickenFace is a Warrior and is level 1
+console.log(player5.getEXP); // 0
+player5.setXP = 100;
+console.log(player5.getEXP); // 100
+player5.setXP = 200;
+console.log(player5.getEXP); // 300
 
 /*  -----------------------------------------------------------------------------------------------------
-                                    Static Members
-
-    -   We can also define static members on a class.
-    -   Static members (properties and methods) are visible on the class itself, rather than on the instances of the class.
-    -   Static members are often used to create utility functions for an application.
-    -   Static members are accessed using the class name, rather than an instance of the class.
-
-    ----------------------------------------------------------------------------------------------------- */
-
-/*  -----------------------------------------------------------------------------------------------------
-                                    The Protected Modifier
+                                          The Protected Modifier
 
     -   We can also define a protected member on a class.
     -   A protected member is similar to a private member, except that it is also accessible in subclasses.
@@ -197,3 +187,162 @@ console.log(player5.getScore); // 100
     -   A protected member cannot be accessed from outside of the class.
 
     ----------------------------------------------------------------------------------------------------- */
+
+class Player6 {
+  // This is the shortcut way to define and initialize properties in a class
+
+  constructor(
+    public name: string,
+    protected type: string, // private - can only be called from within the class
+    public level: number,
+    protected xp: number = 0 // protected - be called by the class and its subclasses
+  ) {}
+
+  get details(): string {
+    return `Player ${this.name} is a ${this.type} and is level ${this.level}`;
+  } // getter - we can call this method as a property
+}
+
+class GM_Girlfriend extends Player6 {
+  private readonly isAdmin: boolean = true;
+
+  constructor(name: string, type: string, level: number, xp: number) {
+    super(name, type, level, xp);
+  }
+
+  rollDice(): number {
+    return 20; // always rolls a 20
+  }
+
+  get specialLoot(): string {
+    const cfLoot = ["ring", "necklace", "bracelet", "weapon", "armor"];
+    const randomLoot = cfLoot[Math.floor(Math.random() * cfLoot.length)];
+    return `You got a new ${randomLoot}!`;
+  }
+}
+
+const player6 = new GM_Girlfriend("SomeNerdGirl", "Ranger", 1, 0);
+console.log(player6.details); // Player SomeNerdGirl is a Ranger and is level 1
+console.log(player6.rollDice()); // 20
+console.log(player6.specialLoot); // You got a new armor!
+
+/*  -----------------------------------------------------------------------------------------------------
+                                                Classes and Interfaces
+
+    -   We can also define interfaces for classes.
+    -   Interfaces are used to define the structure of an object.
+
+    ----------------------------------------------------------------------------------------------------- */
+
+interface Colorful {
+  color: string;
+} // interface
+
+class Ball implements Colorful {
+  // implements - the class must have the properties defined in the interface
+  constructor(public color: string) {}
+}
+
+const ball = new Ball("red");
+console.log(ball.color); // red
+
+class Car implements Colorful {
+  constructor(public brand: string, public color: string) {}
+}
+
+const car = new Car("BMW", "black");
+console.log(car.brand); // BMW
+console.log(car.color); // black
+
+interface Eatable {
+  eat(): void;
+}
+
+class Food implements Colorful, Eatable {
+  constructor(public color: string, public name: string) {}
+
+  eat(): void {
+    console.log(`You ate the ${this.name}!`);
+  }
+}
+
+const food = new Food("red", "apple");
+console.log(food.color); // red
+console.log(food.name); // apple
+food.eat(); // You ate the apple!
+
+/*  -----------------------------------------------------------------------------------------------------
+                                        Abstract Classes
+
+    -   We can also define abstract classes.
+    -   An abstract class is a class that cannot be instantiated directly.
+    -   An abstract class is used as a base class for other classes.
+    -   An abstract class can contain both abstract and concrete methods.
+    -   An abstract method is a method that is declared, but not implemented in the abstract class.
+    -   An abstract method must be implemented in the derived class.
+    -   An abstract method can only exist within an abstract class.
+    -   An abstract method cannot be private or static.
+    -   An abstract method cannot be called directly from the abstract class.
+  ----------------------------------------------------------------------------------------------------- */
+
+abstract class Animal {
+  // abstract class - cannot be instantiated directly
+  constructor(public name: string) {}
+
+  abstract makeSound(): void; // abstract method - must be implemented in the derived class
+  abstract animalDetails(): string; // abstract method - must be implemented in the derived class
+}
+
+class Dog extends Animal {
+  constructor(public name: string, public breed: string, public age: number) {
+    super(name);
+  } // super - calls the constructor of the base class
+
+  makeSound(): void {
+    console.log("Woof!");
+  } // abstract method implementation
+
+  animalDetails(): string {
+    return `The dog's name is ${this.name}, it is a ${this.breed} and it is ${this.age} years old.`;
+  } // abstract method implementation
+}
+
+const dog = new Dog("Bela", "German Shepherd", 6);
+console.log(dog.animalDetails()); // The dog's name is Bela, it is a German Shepherd and it is 6 years old.
+dog.makeSound(); // Woof!
+
+// ----------------------------------------------------------------------------------------------------- //
+
+class Cat extends Animal {
+  constructor(public name: string, public breed: string, public age: number) {
+    super(name);
+  } // super - calls the constructor of the base class
+
+  makeSound(): void {
+    console.log("Meow!");
+  } // abstract method implementation
+
+  animalDetails(): string {
+    return `The cat's name is ${this.name}, it is a ${this.breed} and it is ${this.age} years old.`;
+  } // abstract method implementation
+}
+
+const cat = new Cat("Esmeralda", "StreetCat", 4);
+console.log(cat.animalDetails()); // The cat's name is Esmeralda, it is a StreetCat and it is 4 years old.
+cat.makeSound(); // Meow!
+
+// ----------------------------------------------------------------------------------------------------- //
+
+class GermanShepard extends Dog {
+  constructor(name: string, age: number) {
+    super(name, "German Shepard", age);
+  }
+} // derived class - inherits from the Dog class
+
+const germanShepard = new GermanShepard("Bela", 6);
+console.log(germanShepard.animalDetails()); // The dog's name is Bela, it is a German Shepard and it is 6 years old.
+germanShepard.makeSound(); // Woof!
+
+/*  -----------------------------------------------------------------------------------------------------
+                                        That's it for this lesson!
+  ----------------------------------------------------------------------------------------------------- */
