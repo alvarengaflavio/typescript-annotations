@@ -21,3 +21,24 @@ function doAnotherThing<T>(thing: T): T {
 function doChickenThing<Chicken>(face: Chicken): Chicken {
   return face;
 } // This is a generic function that accepts a single parameter of type Chicken and returns a single parameter of type Chicken.
+
+// Generic Class
+function numberIdendity(item: number): number {
+  return item;
+} // This is a function that accepts a single parameter of type number and returns a single parameter of type number.
+
+function stringIdentity(item: string): string {
+  return item;
+} // This is a function that accepts a single parameter of type string and returns a single parameter of type string.
+
+// Some of the least useful functions of all time. But they are a example. We can create a generic function that will accept any type and return that type.
+
+function identity<T>(item: T): T {
+  return item;
+} // This is a generic function that accepts a single parameter of type T and returns a single parameter of type T.
+
+identity<number>(7); // This is a function call that passes in a number. The type of the parameter is inferred from the argument.
+identity<boolean>(true); // This is a function call that passes in a boolean. The type of the parameter is inferred from the argument.
+identity<string>(
+  "Flamengo three-time champion of the Copa Libertadores da América!"
+); // This is a function call that passes in a string. The type of the parameter is inferred from the argument.
