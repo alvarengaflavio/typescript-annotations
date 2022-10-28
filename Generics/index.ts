@@ -42,3 +42,31 @@ identity<boolean>(true); // This is a function call that passes in a boolean. Th
 identity<string>(
   "Flamengo three-time champion of the Copa Libertadores da América!"
 ); // This is a function call that passes in a string. The type of the parameter is inferred from the argument.
+
+function getRandomElement<T>(list: T[]): T {
+  // This a function that return a random element of an array. The array can be of any type and length.
+  const randomIndex = Math.floor(Math.random() * list.length);
+
+  return list[randomIndex];
+} // get random element of an array of any type.
+
+console.log(
+  getRandomElement<string>([
+    "a",
+    "b",
+    "c",
+    "easy as",
+    "one",
+    "two",
+    "three",
+    "as simple as",
+    "do",
+    "re",
+    "mi",
+  ]) // This is a function call that passes in a string array
+); // result will be "easy as" or "as simple as" or "do" or "re" or "mi".
+// Baby, you and me, girl. ;)
+
+console.log(
+  getRandomElement<number>([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) // This is a function call that passes in a number array
+); // result will be 1, 2, 3, 4, 5, 6, 7, 8, 9 or 10.
