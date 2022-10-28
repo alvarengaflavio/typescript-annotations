@@ -70,3 +70,26 @@ console.log(
 console.log(
   getRandomElement<number>([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) // This is a function call that passes in a number array
 ); // result will be 1, 2, 3, 4, 5, 6, 7, 8, 9 or 10.
+
+/*  ------------------------------------------------------------------------------------------------------
+                                Inferred Generic Type Parameters
+
+    - In many cases typescript can actually infer a type. 
+
+------------------------------------------------------------------------------------------------------  */
+
+getRandomElement(["What", "I", "will", "return", "?"]); // Typescript is smart element to knows that the type of this list is <string>, so we don't need to declare it.
+
+getRandomElement([1, 2, 3, 4, 5, 6]); // As above, we don't need to declare the type <number>.
+
+// This will not be the case for ALL the generic types, in that case we need to declare.
+
+const btn = document.querySelector<HTMLButtonElement>("#btn"); //  Type : HTMLButtonElement | null
+// We must declare the type here. Because typescript can't infer the type.
+
+/*  ------------------------------------------------------------------------------------------------------
+                                Generics Arrow Functions & TSX Files 
+
+    - Generics can be used with arrow functions.
+    
+------------------------------------------------------------------------------------------------------  */
