@@ -95,3 +95,57 @@ const btn = document.querySelector<HTMLButtonElement>("#btn"); //  Type : HTMLBu
     - Open the file "Generics\index.tsx" to see an example.
     
 ------------------------------------------------------------------------------------------------------  */
+
+/*  ------------------------------------------------------------------------------------------------------
+                                Generic With Multiple Types 
+
+    - We can use multiple types with generics.
+
+------------------------------------------------------------------------------------------------------  */
+
+function doSomething<T, U>(thing: T, anotherThing: U): T & U {
+  return { ...thing, ...anotherThing };
+} // This is a generic function that accepts two parameters of type T and U and returns a single parameter of type T & U. Typescript can infer the return type.
+
+doSomething<string, number>("Hello", 7); // Now we can use this generic function and pass two different types.
+
+const comboBreaker = doSomething(
+  { name: "Combo Breaker", age: 7 },
+  { pets: ["Dog", "Cat"] }
+); // comboBraker type is inferred from the arguments.
+
+console.log(comboBreaker); // {name: "Combo Breaker", age: 7, pets: Array(2)}
+
+/*  ------------------------------------------------------------------------------------------------------
+                                          Generic Constraints 
+
+    - We can use generic constraints to restrict the types that can be used with a generic.
+
+------------------------------------------------------------------------------------------------------  */
+
+function doSomethingElse<T extends string | number>(thing: T): T {
+  return thing;
+} // This is a generic function that accepts a single parameter of type T and returns a single parameter of type T. The type T must be a string or number.
+
+doSomethingElse<string>("Hello"); // This is a function call that passes in a string. The type of the parameter is inferred from the argument.
+doSomethingElse<number>(7); // This is a function call that passes in a number. The type of the parameter is inferred from the argument.
+// doSomethingElse<boolean>(true); // This is a function call that passes in a boolean. The type of the parameter is inferred from the argument. This will not work because the type T must be a string or number.
+
+/*  ------------------------------------------------------------------------------------------------------
+                                Generic Constraints With Interfaces 
+
+    - We can use generic constraints with interfaces.
+
+------------------------------------------------------------------------------------------------------  */
+
+interface HasLength {
+  length: number;
+} // This is an interface that has a single property of type number.
+
+function doSomethingWithLength<T extends HasLength>(thing: T): T {
+  return thing;
+} // This is a generic function that accepts a single parameter of type T and returns a single parameter of type T. The type T must have a property of type number.
+
+doSomethingWithLength<string>("Hello"); // This is a function call that passes in a string. The type of the parameter is inferred from the argument.
+doSomethingWithLength<number[]>([1, 2, 3, 4, 5, 6]); // This is a function call that passes in a number array. The type of the parameter is inferred from the argument.
+doSomethingWithLength<boolean[]>([true, false, true, false]); // This is a function call that passes in a boolean array. The type of the parameter is inferred from the argument.
