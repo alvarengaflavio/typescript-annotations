@@ -90,6 +90,8 @@ const btn = document.querySelector<HTMLButtonElement>("#btn"); //  Type : HTMLBu
 /*  ------------------------------------------------------------------------------------------------------
                                 Generics Arrow Functions & TSX Files 
 
+    - If you are wirking with React TSX files, you can use generics with arrow functions.
     - Generics can be used with arrow functions.
+    - Open the file "Generics\index.tsx" to see an example.
     
 ------------------------------------------------------------------------------------------------------  */
