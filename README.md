@@ -18,3 +18,8 @@
    3.2 Start a new project and reopen the vscode and that folder.
 4. Classes `./Classes`  
    4.1 Open Readme `./Classes/README.md`
+5. Generics `./Generics/`  
+   5.1 Open index `./Generics/index.ts`  
+   5.2 Open index `./Generics/src/index.jsx`
+6. Typeof Guards `./TypeofGuards`  
+   6.1 Open index `./TypeofGuards/index.ts`
