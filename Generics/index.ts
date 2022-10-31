@@ -84,7 +84,7 @@ getRandomElement([1, 2, 3, 4, 5, 6]); // As above, we don't need to declare the 
 
 // This will not be the case for ALL the generic types, in that case we need to declare.
 
-const btn = document.querySelector<HTMLButtonElement>("#btn"); //  Type : HTMLButtonElement | null
+//const btn = document.querySelector<HTMLButtonElement>("#btn"); //  Type : HTMLButtonElement | null
 // We must declare the type here. Because typescript can't infer the type.
 
 /*  ------------------------------------------------------------------------------------------------------
@@ -120,32 +120,109 @@ console.log(comboBreaker); // {name: "Combo Breaker", age: 7, pets: Array(2)}
                                           Generic Constraints 
 
     - We can use generic constraints to restrict the types that can be used with a generic.
+    - We can use the "extends" keyword to specify a generic constraint.
+    - This is useful when we want to use a generic with a type that has a specific property.
 
 ------------------------------------------------------------------------------------------------------  */
 
-function doSomethingElse<T extends string | number>(thing: T): T {
-  return thing;
-} // This is a generic function that accepts a single parameter of type T and returns a single parameter of type T. The type T must be a string or number.
+function doSomethingElse<T extends object, U extends object>(
+  thing: T,
+  anotherThing: U
+): T & U {
+  return { ...thing, ...anotherThing }; // This generic function accepts two OBJECTS of type T and U and returns a single object of type T & U. Typescript can infer the return type.
+}
 
-doSomethingElse<string>("Hello"); // This is a function call that passes in a string. The type of the parameter is inferred from the argument.
-doSomethingElse<number>(7); // This is a function call that passes in a number. The type of the parameter is inferred from the argument.
-// doSomethingElse<boolean>(true); // This is a function call that passes in a boolean. The type of the parameter is inferred from the argument. This will not work because the type T must be a string or number.
+const alva = doSomethingElse(
+  { name: "Flavio Alvarenga", age: 9 },
+  { pets: ["Bela", "Esmeralda"] }
+);
+
+console.log(alva); // {name: "Flavio Alvarenga", age: 9, pets: Array(2)}
 
 /*  ------------------------------------------------------------------------------------------------------
                                 Generic Constraints With Interfaces 
 
     - We can use generic constraints with interfaces.
-
+    - We can use the "extends" keyword to specify a generic constraint.
+    
 ------------------------------------------------------------------------------------------------------  */
 
 interface HasLength {
   length: number;
 } // This is an interface that has a single property of type number.
 
-function doSomethingWithLength<T extends HasLength>(thing: T): T {
-  return thing;
-} // This is a generic function that accepts a single parameter of type T and returns a single parameter of type T. The type T must have a property of type number.
+function printDoubleLenth<T extends HasLength>(thing: T): number {
+  // This generic function accepts a parameter of type T that extends the HasLength interface and returns a number.
+  return thing.length * 2;
+}
 
-doSomethingWithLength<string>("Hello"); // This is a function call that passes in a string. The type of the parameter is inferred from the argument.
-doSomethingWithLength<number[]>([1, 2, 3, 4, 5, 6]); // This is a function call that passes in a number array. The type of the parameter is inferred from the argument.
-doSomethingWithLength<boolean[]>([true, false, true, false]); // This is a function call that passes in a boolean array. The type of the parameter is inferred from the argument.
+console.log(printDoubleLenth("Hello")); // 10
+console.log(printDoubleLenth([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])); // 20
+console.log(printDoubleLenth({ length: 7 })); // 14
+// console.log(printDoubleLenth(47)); // ERROR
+
+/*  ------------------------------------------------------------------------------------------------------
+                                  Default Value Parameters With Generics
+
+    - We can use default value parameters with generics.
+
+    ------------------------------------------------------------------------------------------------------ */
+
+function makeEmptyArray<T = number>(): T[] {
+  return [];
+} // to not received a return of type "unknown[]", we need to specify the default type of the array.
+// this is made in the <T> after the function name. We can set the default type of the array typing <T = number> for example.
+
+const numsArray = makeEmptyArray(); // This is a function call that passes in a number array. (by default)
+const strArray = makeEmptyArray<string>(); // But i can still do a string array if i want. Passing the type in the function call.
+const boolArray = makeEmptyArray<boolean>(); // Or a boolean array.
+
+/*  ------------------------------------------------------------------------------------------------------
+                                        Generic Classes
+
+    - We can use generics with classes.
+    - The concept is the same as with functions.
+    ------------------------------------------------------------------------------------------------------ */
+
+interface Song {
+  title: string;
+  artist: string;
+}
+
+interface Video {
+  title: string;
+  director: string;
+  resolution: string;
+}
+
+class Playlist<T> {
+  // This is a generic class that accepts a parameter of type T that extends the Video interface.
+  public playlist: T[] = [];
+
+  addItem(item: T): void {
+    this.playlist.push(item);
+  }
+
+  getPlaylist(): T[] {
+    return this.playlist;
+  }
+}
+
+const songsList = new Playlist<Song>(); // This is a class instance that passes in a Song array.
+const videosList = new Playlist<Video>(); // This is a class instance that passes in a Video array.
+
+songsList.addItem({ title: "Hello", artist: "Adele" }); // This is a function call that passes in a Song object.
+songsList.addItem({ title: "Hello", artist: "Lionel Richie" });
+videosList.addItem({
+  title: "The Matrix",
+  director: "Wachowski",
+  resolution: "1080p",
+}); // This is a function call that passes in a Video object.
+videosList.addItem({
+  title: "The Lord of the Rings",
+  director: "Peter Jackson",
+  resolution: "1080p",
+});
+
+console.log(songsList.getPlaylist()); // [{title: "Hello", artist: "Adele"}, {title: "Hello", artist: "Lionel Richie"}]
+console.log(videosList.getPlaylist()); // [{title: "The Matrix", director: "Wachowski", resolution: "1080p"}, {title: "The Lord of the Rings", director: "Peter Jackson", resolution: "1080p"}]
