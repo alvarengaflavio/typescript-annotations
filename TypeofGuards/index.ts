@@ -14,8 +14,11 @@
 function tripleThings(x: number | string): number | string | void {
   if (typeof x === "number") return x * 3; // x has been narrowed to number
   if (typeof x === "string") return x + x + x; // x has been narrowed to string
-} // This function will receive a number, string, or boolean and return a number or string. If the type of x is not a number or string, then the function will return void.
-// the typeof operator can be used to determine the type of a variable at runtime. The typeof operator returns a string that represents the type of the variable.  For example, the following code will return "number" if the variable x is a number.
+} // This function will receive a number, string, or boolean and return a number or string.
+// If the type of x is not a number or string, then the function will return void.
+// The typeof operator can be used to determine the type of a variable at runtime.
+// The typeof operator returns a string that represents the type of the variable.
+// For example, the following code will return "number" if the variable x is a number.
 const x = 5;
 const y = "5";
 
