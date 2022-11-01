@@ -1,4 +1,4 @@
-# Type Script Guide for Dummies
+# TypeScript Study Annotation
 
 0. Basics `basics.ts`
 1. Types `./Types`  
