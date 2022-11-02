@@ -87,3 +87,59 @@ function narrowingTwoTypes(x: string | number, y: string | boolean) {
     console.log(x, y);
   }
 }
+
+narrowingTwoTypes("Hello", "World"); // x and y are both strings
+narrowingTwoTypes(5, "5"); // x and y are different types
+
+/* -------------------------------------------------------------------------------------
+                                    In Operator Narrowing
+
+    -   The in operator can be used to narrow the type of a variable.  The in operator
+    can be used to check if a property exists on an object.
+    -   If the property exists in a object, according to its type alias or aliases, 
+    before working with it in a type-specific way.
+    -   This is useful when you cannot use the typeof to narrow the type.
+  -------------------------------------------------------------------------------------- */
+
+interface Movie {
+  title: string;
+  director: string;
+  duration: number;
+}
+
+interface TVShow {
+  title: string;
+  episeDuration: number;
+  numEpisodes: number;
+  numSeasons: number;
+}
+
+function getRuntime(item: Movie | TVShow) {
+  if ("director" in item) {
+    // item is a Movie
+    return item.duration;
+  } else {
+    // item is a TVShow
+    return item.numSeasons * item.numEpisodes * item.episeDuration;
+  }
+} // This function will receive a Movie or TVShow and return the runtime of the item.
+
+const movie: Movie = {
+  title: "The Godfather",
+  director: "Francis Ford Coppola",
+  duration: 175,
+};
+
+const tvShow: TVShow = {
+  title: "The Office",
+  episeDuration: 30,
+  numEpisodes: 201,
+  numSeasons: 9,
+};
+
+console.log(getRuntime(movie)); // This will print 175
+console.log(getRuntime(tvShow)); // This will print 13590
+
+/* -------------------------------------------------------------------------------------
+                                    Next Narrowing  
+  -------------------------------------------------------------------------------------- */
