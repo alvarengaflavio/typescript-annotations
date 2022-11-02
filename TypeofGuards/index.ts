@@ -109,13 +109,14 @@ interface Movie {
 
 interface TVShow {
   title: string;
+  director: string;
   episeDuration: number;
   numEpisodes: number;
   numSeasons: number;
 }
 
 function getRuntime(item: Movie | TVShow) {
-  if ("director" in item) {
+  if ("duration" in item) {
     // item is a Movie
     return item.duration;
   } else {
@@ -132,6 +133,7 @@ const movie: Movie = {
 
 const tvShow: TVShow = {
   title: "The Office",
+  director: "Greg Daniels",
   episeDuration: 30,
   numEpisodes: 201,
   numSeasons: 9,
