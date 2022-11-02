@@ -1,4 +1,4 @@
-# TypeScript Study Annotation
+# My TypeScript Study Annotations
 
 0. Basics `basics.ts`
 1. Types `./Types`  
