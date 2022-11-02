@@ -61,3 +61,29 @@ const printLetters = (word?: string) => {
     console.log("You did not pass in a word");
   }
 }; // This function will print each letter of a string to the console.
+
+printLetters("Hello"); // This will print each letter of the string "Hello" to the console.
+printLetters(); // This will print "You did not pass in a word" to the console.
+
+/* -------------------------------------------------------------------------------------
+                                    Equality Narrowing
+
+    -   Equality Narrowing involves comparing types to each other before doing certain
+    oparations with values.
+    -   By checking two values against each other, we can be sure they're both the same
+    before working with them in a type-specific way.
+  -------------------------------------------------------------------------------------- */
+
+// Equality Narrowing
+function narrowingTwoTypes(x: string | number, y: string | boolean) {
+  if (x === y) {
+    // using equality comparison to narrow types
+    // x and y are the same type, both strings
+    x.toUpperCase(); // OK
+    y.toUpperCase(); // OK
+  } else {
+    // x and y are different types
+    // x.toUpperCase(); // Error: Property 'toUpperCase' does not exist on type 'number'.
+    console.log(x, y);
+  }
+}
