@@ -119,10 +119,9 @@ function getRuntime(item: Movie | TVShow) {
   if ("duration" in item) {
     // item is a Movie
     return item.duration;
-  } else {
-    // item is a TVShow
-    return item.numSeasons * item.numEpisodes * item.episeDuration;
   }
+  // item is a TVShow
+  return item.numSeasons * item.numEpisodes * item.episeDuration;
 } // This function will receive a Movie or TVShow and return the runtime of the item.
 
 const movie: Movie = {
