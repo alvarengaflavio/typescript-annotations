@@ -264,14 +264,21 @@ interface Horse {
   speed: number;
 }
 
-function getFarmAnimalSound(animal: Chicken | Cow | Horse) {
+type FarmAnimal = Chicken | Cow | Horse; // This is a union type
+
+function getFarmAnimalSound(animal: FarmAnimal) {
   switch (animal.type) {
     case "chicken":
       return "Cluck";
+
     case "cow":
       return "Moo 22 Moo";
+
     case "horse":
       return "Neigh";
+
+    default:
+      return "No sound";
   }
 }
 
