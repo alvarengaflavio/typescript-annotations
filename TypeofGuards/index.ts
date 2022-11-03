@@ -278,7 +278,7 @@ function getFarmAnimalSound(animal: FarmAnimal) {
       return "Neigh";
 
     default:
-      return "No sound";
+      return "Unknown animal"; // This should never happen (see next section)
   }
 }
 
@@ -305,7 +305,7 @@ console.log(getFarmAnimalSound(cow)); // This will print "Moo 22 Moo"
 console.log(getFarmAnimalSound(horse)); // This will print "Neigh"
 
 /* -------------------------------------------------------------------------------------
-                                    Exhaustiveness Checking
+                        Exhaustiveness Checking | Never checking
 
     -   Exhaustiveness checking is a feature of the TypeScript compiler that ensures that
     all possible cases of a union type are handled.
@@ -313,3 +313,40 @@ console.log(getFarmAnimalSound(horse)); // This will print "Neigh"
     cases are handled.
     -   If you don't handle all possible cases, the compiler will throw an error.
   -------------------------------------------------------------------------------------- */
+
+interface Sheep {
+  type: "sheep";
+  name: string;
+  wool: number;
+}
+
+type FarmAnimal2 = Chicken | Cow | Horse | Sheep; // This is a union type
+
+// applying to the old getFarmAnimalSound function
+function getFarmAnimalSound2(animal: FarmAnimal2) {
+  switch (animal.type) {
+    case "chicken":
+      return "Cluck";
+
+    case "cow":
+      return "Moo 22 Moo";
+
+    case "horse":
+      return "Neigh";
+
+    case "sheep":
+      // This case is missing in the old function and will throw an error in the compiler
+      // if not implemented
+      return "Baa";
+
+    // If you don't handle all possible cases, the compiler will throw an error.
+    // default: Types of property 'type' are incompatible.
+
+    default:
+      // We should never get here, if we handle all possible cases!
+      const shouldNeverGetHere: never = animal; // never checking
+    // never is assigneble to every type but no other type is assignable to never!
+    // if we ever get here we're going to get an error because we cannot have an animal
+    // assigned to type: never
+  }
+}
