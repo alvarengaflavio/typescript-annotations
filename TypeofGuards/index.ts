@@ -139,8 +139,58 @@ const tvShow: TVShow = {
 };
 
 console.log(getRuntime(movie)); // This will print 175
-console.log(getRuntime(tvShow)); // This will print 13590
+console.log(getRuntime(tvShow)); // This will print 54270
 
 /* -------------------------------------------------------------------------------------
-                                    Next Narrowing  
+                                    instanceof Narrowing
+
+    -   The instanceof operator can be used to narrow the type of a variable.  
+    -   The instanceof operator can be used to check if an object is an instance of a class.
+    -   If the object is an instance of a class, according to its type alias or aliases,
+    before working with it in a type-specific way.
+    -   This is useful when you work with things like classes. (remeber prototypes?)
+  -------------------------------------------------------------------------------------- */
+
+function printFullDate(date: Date | string) {
+  if (date instanceof Date) {
+    // date is a Date object of the Date class
+    return date.toDateString();
+  }
+  // date is a string
+  return new Date(date).toDateString();
+} // This function will receive a Date or string and return the date as a string.
+
+console.log(printFullDate(new Date())); // This will print the current date as a string.
+console.log(printFullDate("2020-01-01")); // This will print "Sat Jan 01 2020" as a string.
+
+class User {
+  constructor(public username: string, public email: string) {}
+}
+
+class Company {
+  constructor(public name: string, public email: string) {}
+}
+
+function printName(entity: User | Company): string {
+  if (entity instanceof User) {
+    // entity is a User
+    return entity.username;
+  }
+  // entity is a Company
+  return entity.name;
+} // This function will receive a User or Company and return the name of the entity.
+
+const user = new User("John Doe", "jhondoe@gmail.com");
+const company = new Company("Google", "google@gmail.com");
+
+console.log(printName(user)); // This will print "John Doe"
+console.log(printName(company)); // This will print "Google"
+
+/* -------------------------------------------------------------------------------------
+                                    Type Predicates
+
+    -   Type predicates are custom functions that return a boolean value.  They are used to
+    narrow the type of a variable.
+    -   Type predicates are useful when you need to check if a value is a certain type
+    before working with it in a type-specific way.
   -------------------------------------------------------------------------------------- */
