@@ -27,4 +27,8 @@
         to learn about working with third party code and third party type 
         declarion files. 
 
+
+        OPEN THIS FOLDER IN VISUAL STUDIO CODE TO SEE THE CODE IN ACTION.
+        cd /TypeDeclarations 
+        code .
     ------------------------------------------------------------------------- */
