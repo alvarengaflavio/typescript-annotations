@@ -209,9 +209,9 @@ interface Dog {
 
 // This function will receive a Cat or Dog and return a boolean value.
 function isCat(animal: Cat | Dog): animal is Cat {
-  // animal is Cat is the type predicate
+  // animal is Cat is the type predicate and must be the return type
   return (animal as Cat).purrs !== undefined;
-} // true if is has purrs property
+} // true if is has purrs property, must return a boolean value
 
 function makeNoise(animal: Cat | Dog): void {
   if (isCat(animal)) {
@@ -241,8 +241,68 @@ makeNoise(dog); // This will print "woof woof"
 /* -------------------------------------------------------------------------------------
                                     Discriminated Unions
 
-    -   Discriminated Unions are a way to narrow the type of a variable.  They are used to
-    narrow the type of a variable.
-    -   Discriminated Unions are useful when you need to check if a value is a certain type
-    before working with it in a type-specific way.
+    -   Discriminated Unions are a common pattern in TypeScript that involves creating a 
+    literal property that is common across multiple types. 
+    -   We can then narrow the type using that literal property.
+  -------------------------------------------------------------------------------------- */
+
+interface Chicken {
+  type: "chicken"; // literal property
+  name: string;
+  layEggs: boolean;
+}
+
+interface Cow {
+  type: "cow"; // literal property
+  name: string;
+  weight: number;
+}
+
+interface Horse {
+  type: "horse"; // literal property
+  name: string;
+  speed: number;
+}
+
+function getFarmAnimalSound(animal: Chicken | Cow | Horse) {
+  switch (animal.type) {
+    case "chicken":
+      return "Cluck";
+    case "cow":
+      return "Moo 22 Moo";
+    case "horse":
+      return "Neigh";
+  }
+}
+
+const chicken: Chicken = {
+  type: "chicken",
+  name: "Gertrudis",
+  layEggs: true,
+};
+
+const cow: Cow = {
+  type: "cow",
+  name: "Bessy",
+  weight: 1000,
+};
+
+const horse: Horse = {
+  type: "horse",
+  name: "Pegasus",
+  speed: 100,
+};
+
+console.log(getFarmAnimalSound(chicken)); // This will print "Cluck"
+console.log(getFarmAnimalSound(cow)); // This will print "Moo 22 Moo"
+console.log(getFarmAnimalSound(horse)); // This will print "Neigh"
+
+/* -------------------------------------------------------------------------------------
+                                    Exhaustiveness Checking
+
+    -   Exhaustiveness checking is a feature of the TypeScript compiler that ensures that
+    all possible cases of a union type are handled.
+    -   This is useful when you have a union type and you want to make sure that all possible
+    cases are handled.
+    -   If you don't handle all possible cases, the compiler will throw an error.
   -------------------------------------------------------------------------------------- */
