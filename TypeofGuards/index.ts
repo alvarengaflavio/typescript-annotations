@@ -209,6 +209,7 @@ interface Dog {
 
 // This function will receive a Cat or Dog and return a boolean value.
 function isCat(animal: Cat | Dog): animal is Cat {
+  // animal is Cat is the type predicate
   return (animal as Cat).purrs !== undefined;
 } // true if is has purrs property
 
