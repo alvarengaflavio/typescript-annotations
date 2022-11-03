@@ -194,3 +194,54 @@ console.log(printName(company)); // This will print "Google"
     -   Type predicates are useful when you need to check if a value is a certain type
     before working with it in a type-specific way.
   -------------------------------------------------------------------------------------- */
+
+interface Cat {
+  name: string;
+  numLives: number;
+  purrs: "ron ron ron";
+}
+
+interface Dog {
+  name: string;
+  breed: string;
+  barks: "woof woof";
+}
+
+// This function will receive a Cat or Dog and return a boolean value.
+function isCat(animal: Cat | Dog): animal is Cat {
+  return (animal as Cat).purrs !== undefined;
+} // true if is has purrs property
+
+function makeNoise(animal: Cat | Dog): void {
+  if (isCat(animal)) {
+    // animal is a Cat
+    console.log(animal.purrs);
+  } else {
+    // animal is a Dog
+    console.log(animal.barks);
+  }
+} // This function will receive animal and test his type calling isCat function.
+
+const cat: Cat = {
+  name: "Esmeralda",
+  numLives: 9,
+  purrs: "ron ron ron",
+};
+
+const dog: Dog = {
+  name: "Bela",
+  breed: "German Shepherd",
+  barks: "woof woof",
+};
+
+makeNoise(cat); // This will print "ron ron ron"
+makeNoise(dog); // This will print "woof woof"
+
+/* -------------------------------------------------------------------------------------
+                                    Discriminated Unions
+
+    -   Discriminated Unions are a way to narrow the type of a variable.  They are used to
+    narrow the type of a variable.
+    -   Discriminated Unions are useful when you need to check if a value is a certain type
+    before working with it in a type-specific way.
+  -------------------------------------------------------------------------------------- */
