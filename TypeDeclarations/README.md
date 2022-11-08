@@ -1,6 +1,8 @@
 /\* -------------------------------------------------------------------------
-Type Declarations
-Working With 3rd Party Code
+
+# Type Declarations
+
+## Working With 3rd Party Code
 
         This file contains all the type declarations for the application.
     Specifically, how to deal with 3rd party Javascript libraries in a
