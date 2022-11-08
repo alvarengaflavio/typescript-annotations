@@ -20,3 +20,90 @@ console.log(add(1, 2)); // 3
 console.log(sample([1, 2, 3, 4, 5])); // 3 or 4 or 5...
 
 // Change compilerOptions in tsconfig.json file to: "module": "commonjs" and "target": "es6"
+/*
+    For example: In a html file the DOM don't know about import, export, require... this things exists in the NODE world. 
+    With these different ecosystems, the browser JavaScript vs Node.js, we have different ways to import and export modules.
+    In the browser, we can not use the import keyword. Working only with scripts, adding the script tag in the html file in the correct order. 
+    in this case <script src="utils.js"></script> follow by <script src="index.js"></script> but this defeats the hole point of this section. 
+
+    So, what we want to do is tell the TypeScript compiler to compile our code to a format that the browser can understand. PLEASE USE THIS IMPORT SYNTAX ES6 MODULES.
+    So, we need to change the compilerOptions in tsconfig.json file to: "module": "ES6" and "target": "es6"  
+    We must especify in the html file the type="module" in the script tag. <script src="index.js" type="module"></script>  
+
+*/
+
+/*
+    ES6 Modules Syntax:
+    -   import { add, sample } from "./utils";
+    -   export function add(a: number, b: number) {
+    -       return a + b;
+    -   }
+    -   export function sample<T>(arr: T[]) {
+    -       return arr[Math.floor(Math.random() * arr.length)];
+    -   }
+
+    CommonJS and Node.js Syntax:
+    -   const { add, sample } = require("./utils");
+    -   module.exports = {
+    -       add,
+    -       sample,
+    -   };
+
+    AMD Syntax:
+    -   define(["./utils"], function (utils) {
+    -       console.log(utils.add(1, 2));
+    -       console.log(utils.sample([1, 2, 3, 4, 5]));
+    -   });
+
+    UMD Syntax:
+    -   (function (root, factory) {
+    -       if (typeof define === "function" && define.amd) {
+    -           define(["./utils"], factory);
+    -       } else if (typeof module === "object" && module.exports) {
+    -           module.exports = factory(require("./utils"));
+    -       } else {
+    -           root.returnExports = factory(root.utils);
+    -       }
+    -   })(this, function (utils) {
+    -       console.log(utils.add(1, 2));
+    -       console.log(utils.sample([1, 2, 3, 4, 5]));
+    -   });
+
+    SystemJS Syntax:
+    -   System.import("./utils").then(function (utils) {
+    -       console.log(utils.add(1, 2));
+    -       console.log(utils.sample([1, 2, 3, 4, 5]));
+    -   });
+
+    TypeScript Syntax:
+    -   import { add, sample } from "./utils";
+    -   export function add(a: number, b: number) {
+    -       return a + b;
+    -   }
+    -   export function sample<T>(arr: T[]) {
+    -       return arr[Math.floor(Math.random() * arr.length)];
+    -   }
+
+        We can set a default export for a module.
+        -   export default function add(a: number, b: number) {
+        -       return a + b;
+        -   }
+        -   import add from "./utils";
+        -   console.log(add(1, 2));
+
+        We can also export a module as a namespace.
+        -   export namespace utils {
+        -       export function add(a: number, b: number) {
+        -           return a + b;
+        -       }
+        -       export function sample<T>(arr: T[]) {
+        -           return arr[Math.floor(Math.random() * arr.length)];
+        -       }
+        -   }
+        -   import { utils } from "./utils";
+        -   console.log(utils.add(1, 2));
+        -   console.log(utils.sample([1, 2, 3, 4, 5]));
+
+        
+
+*/
