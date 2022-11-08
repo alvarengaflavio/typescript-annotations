@@ -104,6 +104,26 @@ console.log(sample([1, 2, 3, 4, 5])); // 3 or 4 or 5...
         -   console.log(utils.add(1, 2));
         -   console.log(utils.sample([1, 2, 3, 4, 5]));
 
-        
-
 */
+
+/* -------------------------------------------------------------------------------------
+                                    Importing Types
+
+    -   We can also import types from other modules.
+    -   We can import types from other modules and use them in our code.
+    ------------------------------------------------------------------------------------- */
+
+// We created the types.ts file and write two simple types there. The first type Person takes a name and age and returns a string. The second type Sample takes an array of any type and returns a random element from that array.
+// let's create the types.ts file and write the types there.
+// Now we can import the types in the types.ts file and use them in our code.
+import type { Person, Color } from "./types"; // We can use the type keyword to import only the types. We can not use the type keyword to import the functions.
+
+const person: Person = {
+  name: "John",
+  email: "email@email.com",
+};
+
+const color: Color = "red";
+
+console.log(person, color); // { name: 'John', email: 'email@email.com' } 'red'
+// Everything works fine.
