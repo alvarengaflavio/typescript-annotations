@@ -25,4 +25,5 @@
    6.1 Open index `index.ts`
 7. Working with Type Declarations `./TypeDeclarations`  
    7.1 Open index `index.ts`
-8.
+8. Working with  
+   8.1 S
