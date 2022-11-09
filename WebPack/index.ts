@@ -88,7 +88,16 @@
 // then we must run npm run build
 // now we can see the application running in the browser
 
+// [contenthash] is a hash of the content of the file.  It is used to ensure that the
+// browser doesn't use a cached version of the file.  If the file changes, the hash will
+// change, and the browser will load the new version of the file.
+// [contenthash].bundle.js is the name of the bundle file.  It is a good practice to
+// include the hash in the file name so that the browser doesn't use a cached version of
+// the file.
+
+// We can add this lovely plugin to help to clean the dist folder before each build
 // and we must add the following plugins:
+// plugins: [
 // new CleanWebpackPlugin(['dist']),
 // new HtmlWebpackPlugin({
 //     title: 'Production'
@@ -108,3 +117,4 @@
 //         new OptimizeCSSAssetsPlugin({})
 //     ]
 // },
+// ],
