@@ -81,6 +81,13 @@
 // In webpack.common.js and copy the content of the file to webpack.prod.js
 // In webpack.prod.js we must add the following line:
 // mode: 'production',
+
+// in package.json we must add the following line:
+// "build": "webpack --config webpack.prod.js",
+
+// then we must run npm run build
+// now we can see the application running in the browser
+
 // and we must add the following plugins:
 // new CleanWebpackPlugin(['dist']),
 // new HtmlWebpackPlugin({
@@ -101,6 +108,3 @@
 //         new OptimizeCSSAssetsPlugin({})
 //     ]
 // },
-
-// then we must run npm run build
-// now we can see the application running in the browser
