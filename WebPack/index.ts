@@ -35,15 +35,6 @@
 
 // run: npm run start to start the webpack-dev-server and see the application running in the browser =)
 
-// then we must create a webpack folder in the root directory
-// then we must create a webpack.common.js file in the webpack folder
-// then we must create a webpack.dev.js file in the webpack folder
-// then we must create a webpack.prod.js file in the webpack folder
-// then we must create a webpack folder in the src directory
-// then we must create a index.html file in the webpack folder
-// then we must create a polyfills.ts file in the webpack folder
-// then we must create a tsconfig.webpack.json file in the webpack folder
-
 /* -------------------------------------------------------------------------------------
                                         Adding Sorce Maps
 
@@ -52,8 +43,10 @@
     can see the original source code in the browser's debugger.
     ------------------------------------------------------------------------------------- */
 
-// we must go to the webpack.common.js file and add the following line:
-// devtool: 'source-map',
+// In tsconfig.json we must uncomment the line: "sourceMap": true,
+// Also, we must go to the webpack.common.js file and add the following line:
+// devtool: 'inline-source-map',
 
 // then we must run npm run build again
 // now we can see the original source code in the browser's debugger
+// et voilà =)
