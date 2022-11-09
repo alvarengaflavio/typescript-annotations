@@ -50,3 +50,21 @@
 // then we must run npm run build again
 // now we can see the original source code in the browser's debugger
 // et voilà =)
+
+/* -------------------------------------------------------------------------------------
+                                        WebPack Dev Server
+
+    -   The WebPack Dev Server is a development server that provides live reloading.  It
+    also provides a web server that hosts the application.
+    ------------------------------------------------------------------------------------- */
+
+// In webpack.common.js we must add the following line:
+// devServer: {
+//     contentBase: './dist'
+// },
+// we should add add development mode in the webpack.common.js file
+// mode: 'development',
+
+// then we must run npm run start
+// now we can see the application running in the browser
+// et voilà =)
