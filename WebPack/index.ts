@@ -29,6 +29,12 @@
 // Then we must CREATE a webpack.config.js file in the root directory
 // There are a model of this file it in this folder
 
+// run npm run build
+// the bundle.js file will be created in the dist folder
+// Now we can link the bundle.js file in the index.html file and the application will work as expected!!!!
+
+// run: npm run start to start the webpack-dev-server and see the application running in the browser =)
+
 // then we must create a webpack folder in the root directory
 // then we must create a webpack.common.js file in the webpack folder
 // then we must create a webpack.dev.js file in the webpack folder
@@ -37,3 +43,17 @@
 // then we must create a index.html file in the webpack folder
 // then we must create a polyfills.ts file in the webpack folder
 // then we must create a tsconfig.webpack.json file in the webpack folder
+
+/* -------------------------------------------------------------------------------------
+                                        Adding Sorce Maps
+
+    -   Source maps are a way of mapping the code in the bundle back to the original source
+    code.  This is useful for debugging purposes.  If you have a problem in your code, you
+    can see the original source code in the browser's debugger.
+    ------------------------------------------------------------------------------------- */
+
+// we must go to the webpack.common.js file and add the following line:
+// devtool: 'source-map',
+
+// then we must run npm run build again
+// now we can see the original source code in the browser's debugger
