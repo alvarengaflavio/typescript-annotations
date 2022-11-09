@@ -56,6 +56,9 @@
 
     -   The WebPack Dev Server is a development server that provides live reloading.  It
     also provides a web server that hosts the application.
+    -   It is not intended for production use. It is only intended for development, keeping
+    the build process fast and efficient. Maintaining the bundle in memory and serving it
+    from memory is much faster than writing it to disk and serving it from disk.
     ------------------------------------------------------------------------------------- */
 
 // In webpack.common.js we must add the following line:
@@ -67,4 +70,37 @@
 
 // then we must run npm run start
 // now we can see the application running in the browser
-// et voilà =)
+
+/* -------------------------------------------------------------------------------------
+                                    WebPack Production Build
+
+    -   The WebPack production build is a build that is intended for production use.  It
+    is slower than the development build, but it is optimized for production use.
+    ------------------------------------------------------------------------------------- */
+
+// In webpack.common.js and copy the content of the file to webpack.prod.js
+// In webpack.prod.js we must add the following line:
+// mode: 'production',
+// and we must add the following plugins:
+// new CleanWebpackPlugin(['dist']),
+// new HtmlWebpackPlugin({
+//     title: 'Production'
+// }),
+// new UglifyJsPlugin({
+//     sourceMap: true
+// }),
+// new OptimizeCSSAssetsPlugin({}),
+// and we must add the following line:
+// optimization: {
+//     minimizer: [
+//         new UglifyJsPlugin({
+//             cache: true,
+//             parallel: true,
+//             sourceMap: true // set to true if you want JS source maps
+//         }),
+//         new OptimizeCSSAssetsPlugin({})
+//     ]
+// },
+
+// then we must run npm run build
+// now we can see the application running in the browser
