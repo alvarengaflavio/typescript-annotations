@@ -29,4 +29,5 @@
    8.1 Open index `index.ts`
 9. WebPack and TypeScript `./WebPack`  
    9.1 Open index `index.ts`
-10. React
+10. React and TypeScript - TSX `./React`  
+    10.1 Open index `index.ts`
