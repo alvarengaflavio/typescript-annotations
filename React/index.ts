@@ -221,3 +221,41 @@
         export default App;
 
     -------------------------------------------------------------------------------------- */
+
+/*  -------------------------------------------------------------------------------------
+                                       To Finish
+
+        To pass a function as a prop, we can set a interface and pass the function as a prop
+        to the component.  The function must receive a parameter and return void.
+
+        interface ShoppingListProps {
+            items: Item[];
+            onAddItem: (item: Item) => void; // This is the function that we will pass as a prop
+        }
+        
+        Note that the function must receive a parameter and return void.
+
+        Hooks and Refs has generic types.  
+        We can pass the type of the state to the useState hook.
+        We can also pass the type of the ref to the useRef hook. 
+        We pass the type of the data that will be stored in the ref or state. 
+        The type of the data must be passed as a generic type.
+
+        const inputRef = useRef<HTMLInputElement>(null); // The ref will be of type HTMLInputElement
+        const [shoppingList, setShoppingList] = useState<Item[]>(() => items); // The state will be 
+        of type Item[]
+
+        That's a lot more than we need to know about React and TypeScript.  I highly recommend
+        that you read the official documentation about React and TypeScript.  
+        Also the Cheatsheets are very good too.
+
+            https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/hooks
+
+        I hope this annotations help you to understand React and TypeScript better. Also, I hope
+        that you enjoy all the course.  If you liked leave your star here. If you have any
+        questions, please leave a comment.  I will be happy to answer your questions.  
+        
+        Thank you
+
+        Flávio Alvarenga Rodrigues
+    ------------------------------------------------------------------------------------- */
