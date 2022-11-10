@@ -124,3 +124,88 @@
 
     -------------------------------------------------------------------------------------- */
 //  We can also export the component inline =)
+
+/*  -------------------------------------------------------------------------------------
+                            Let's write a more complex component
+
+        -   We will create a component called "ShppingList".  This component will receive a
+        list of items and will return a React element.
+        -   We will use the ShoppingList component in the App function.
+        -   The ShoppingList component will render a bunch of li's and also a form.  The
+        form will have an input and a button.  The input will be used to add new items to
+        the list.
+        -   Propably we will need to use the useState hook to manage the state of the
+        component.
+    ------------------------------------------------------------------------------------- */
+
+/*  -------------------------------------------------------------------------------------
+                                        ShoppingList.tsx    
+
+        interface ShoppingListProps {
+            items: [
+                {
+                    id: number;
+                    product: string;
+                    quantity: number;
+                }
+            ];
+        }
+
+        export const ShoppingList = ({ items }: ShoppingListProps): JSX.Element => {
+
+            const [newItem, setNewItem] = useState({
+                id: 0,
+                product: '',
+                quantity: 0,
+            });
+
+            const [shoppingList, setShoppingList] = useState(() => items);
+
+            cont handleNewItem = (event: React.ChangeEvent<HTMLInputElement>) => {
+                setNewItem(() => {
+                    ...newItem,
+                    [event.target.name]: event.target.value,
+                });
+
+                setShoppingList(() => [...shoppingList, newItem]);
+            };
+
+
+            return (
+                <div>
+                    <ul>
+                        {items.map((item) => (
+                            <li key={item.id}>{item.name} - {item.quantity} </li>
+                        ))}
+                    </ul>
+                    <form onSubmit={handleNewItem}>
+                        <input type="text" />
+                        <button>Add</button>
+                    </form>
+                </div>
+            );
+        };
+
+    -------------------------------------------------------------------------------------- */
+// Now that we have the ShoppingList component, we can use it in the App function.
+// Let's import the ShoppingList component in the App.tsx file.
+// Then we create a new array of items and pass it to the ShoppingList component.
+/*  -------------------------------------------------------------------------------------
+                                        App.tsx
+
+        import React from 'react';
+        import { ShoppingList } from './ShoppingList';
+
+        const App = () => {
+            const items = [
+                { id: 1, product: 'Milk', quantity: 2 },
+                { id: 2, product: 'Bread', quantity: 1 },
+                { id: 3, product: 'Eggs', quantity: 12 },
+            ];
+
+            return <ShoppingList items={items} />;
+        };
+
+        export default App;
+
+    -------------------------------------------------------------------------------------- */
