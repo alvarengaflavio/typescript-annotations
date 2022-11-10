@@ -141,27 +141,31 @@
 /*  -------------------------------------------------------------------------------------
                                         ShoppingList.tsx    
 
+        import React, { useState } from 'react';
+
+        interface Item {
+            id: number;
+            product: string;
+            quantity: number;
+        }
+
         interface ShoppingListProps {
-            items: [
-                {
-                    id: number;
-                    product: string;
-                    quantity: number;
-                }
-            ];
+            items: Item[];
         }
 
         export const ShoppingList = ({ items }: ShoppingListProps): JSX.Element => {
 
-            const [newItem, setNewItem] = useState({
+            const [newItem, setNewItem] = useState<Item>({
                 id: 0,
                 product: '',
                 quantity: 0,
             });
 
-            const [shoppingList, setShoppingList] = useState(() => items);
+            const [shoppingList, setShoppingList] = useState<Item[]>(() => items);
 
             cont handleNewItem = (event: React.ChangeEvent<HTMLInputElement>) => {
+                event.preventDefault();
+                
                 setNewItem(() => {
                     ...newItem,
                     [event.target.name]: event.target.value,
@@ -179,7 +183,7 @@
                         ))}
                     </ul>
                     <form onSubmit={handleNewItem}>
-                        <input type="text" />
+                        <input type="text" placeholder="Product Name" />
                         <button>Add</button>
                     </form>
                 </div>
