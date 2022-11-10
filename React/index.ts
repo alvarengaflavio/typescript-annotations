@@ -83,5 +83,44 @@
 // https://react-typescript-cheatsheet.netlify.app/docs/basic/setup
 
 /*  -------------------------------------------------------------------------------------
+                                    Old way to create components
+                                
+    -   In the previous example, we used a function to create a component.  We can also
+    create a component using a class.  The class must extend
+    React.Component<props, state>.  The props are the properties that the component
+    receives.  The state is the internal state of the component.
+    ------------------------------------------------------------------------------------- */
 
+/*  -------------------------------------------------------------------------------------
+                                        OldHelloWorld.tsx
+        
+        import React from 'react';
 
+        const OldHelloWorld: React.FC<{ name: string }> = (props) => {
+            return <div>Hello {props.name}</div>;
+        };
+
+        export default OldHelloWorld;
+
+    -------------------------------------------------------------------------------------- */
+
+/*  -------------------------------------------------------------------------------------
+                                    Props with TypeScript
+
+    -   We can define the props of a component using an interface.  The interface must have
+    the same name of the component.  The interface must extend React.Props.
+    ------------------------------------------------------------------------------------- */
+
+/*  -------------------------------------------------------------------------------------
+                                        HelloWorld.tsx
+
+        interface HelloWorldProps {
+        name: string;
+        }
+
+        export const HelloWorld = ({ name }: HelloWorldProps): JSX.Element => {
+            return <div>Hi {name}</div>;
+        };
+
+    -------------------------------------------------------------------------------------- */
+//  We can also export the component inline =)
