@@ -42,3 +42,46 @@
     -   A React component is a function or a class that accepts input and returns a React
     element.
     ------------------------------------------------------------------------------------- */
+
+// Now we will create a new component and after import him in the App.tsx file.  We will
+// create a new component called "HelloWorld".  This component will receive a name property
+// and will return a React element.
+
+/*  -------------------------------------------------------------------------------------
+                                            HelloWorld.tsx 
+    ------------------------------------------------------------------------------------- 
+
+    import React from 'react';
+
+    const HelloWorld = (props: { name: string }) => {
+        return <div>Hello {props.name}</div>;
+    };
+
+    export default HelloWorld;
+
+    --------------------------------------------------------------------------------------    */
+
+// Now we will use this component in the App.tsx file.  We will use the HelloWorld component
+// in the App function.
+
+/*  -------------------------------------------------------------------------------------
+                                            App.tsx 
+    -------------------------------------------------------------------------------------
+
+    import React from 'react';
+    import HelloWorld from './HelloWorld';
+
+    const App = () => {
+        return <HelloWorld name="React" />;
+    };
+
+    export default App;
+
+    --------------------------------------------------------------------------------------    */
+
+// Good nonofficial documentation about React and TypeScript:
+// https://react-typescript-cheatsheet.netlify.app/docs/basic/setup
+
+/*  -------------------------------------------------------------------------------------
+
+
