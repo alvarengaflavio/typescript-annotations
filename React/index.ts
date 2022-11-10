@@ -15,8 +15,7 @@
     React\index.ts
     ------------------------------------------------------------------------------------- */
 
-// You could use React without TypeScript, but it is recommended to use TypeScript with
-// React.  TypeScript is a superset of JavaScript.  It is a typed superset of JavaScript.
+// You could use React without TypeScript, and it is recommended.
 // One way to use React with TypeScript is to use the create-react-app tool.  This tool
 // creates a React application with TypeScript support.  It also creates a development
 // server and a production build.
@@ -26,27 +25,16 @@
 //
 // Then we must go to the react-typescript folder and run the application:
 // npm start
-//
-// Now we can see the application running in the browser =)
 
 // We can also create a React App in Vite. Vite is a build tool for modern web projects.
 // It is a build tool for modern web projects.  It is a build tool for modern web projects.
 // To start new Vite project, we must run the following command:
 // npm init @vitejs/app react-typescript --template react-ts
-//
+
 // Then we must go to the react-typescript folder and run the application:
 // npm run dev
-//
-// Now we can see the application running in the browser =)
 
-// We can also create a React App in Snowpack. Snowpack is a build tool for modern web
-// projects.  It is a build tool for modern web projects.  It is a build tool for modern
-// web projects.  To start new Snowpack project, we must run the following command:
-// npx create-snowpack-app react-typescript --template @snowpack/app-template-react-typescript
-//
-// Then we must go to the react-typescript folder and run the application:
-// npm run start
-//
+// Now we can see the application running in the browser =)
 
 /*  -------------------------------------------------------------------------------------
                                 REACT COMPONENTS IN TYPESCRIPT
