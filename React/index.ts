@@ -141,7 +141,7 @@
 /*  -------------------------------------------------------------------------------------
                                         ShoppingList.tsx    
 
-        import React, { useState } from 'react';
+        import React, { useState, useRef } from 'react';
 
         interface Item {
             id: number;
@@ -155,23 +155,31 @@
 
         export const ShoppingList = ({ items }: ShoppingListProps): JSX.Element => {
 
-            const [newItem, setNewItem] = useState<Item>({
-                id: 0,
-                product: '',
-                quantity: 0,
-            });
+            const inputRef = useRef<HTMLInputElement>(null);
 
             const [shoppingList, setShoppingList] = useState<Item[]>(() => items);
 
-            cont handleNewItem = (event: React.ChangeEvent<HTMLInputElement>) => {
+            cont handleSubmit = (event: React.FormEvent) => {
                 event.preventDefault();
-                
-                setNewItem(() => {
-                    ...newItem,
-                    [event.target.name]: event.target.value,
-                });
 
-                setShoppingList(() => [...shoppingList, newItem]);
+                const itemIndex = shoppingList.findIndex(
+                    (item) => item.product === inputRef.current.value
+                );
+
+                if (itemIndex === -1) {
+                    const newItem = {
+                        id: shoppingList.length + 1,
+                        product: inputRef.current.value,
+                        quantity: 1,
+                    };
+
+                    setShoppingList(() => [...shoppingList, newItem]);
+                    return;
+                }
+                
+                const newShoppingList = [...shoppingList];
+                newShoppingList[itemIndex].quantity += 1;
+                setShoppingList(() => newShoppingList);
             };
 
 
@@ -182,8 +190,8 @@
                             <li key={item.id}>{item.name} - {item.quantity} </li>
                         ))}
                     </ul>
-                    <form onSubmit={handleNewItem}>
-                        <input type="text" placeholder="Product Name" />
+                    <form onSubmit={handleSubmit}>
+                        <input type="text" placeholder="Product Name" ref={inputRef} />
                         <button>Add</button>
                     </form>
                 </div>
