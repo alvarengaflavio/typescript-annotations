@@ -77,3 +77,43 @@ const studentObject = new Student("StudentFace");
     decorator is applied to the constructor function itself. The decorator function is
     passed the constructor function as an argument.
     ------------------------------------------------------------------------------------- */
+
+// The following example shows how to use a decorator to modify the behavior of a class
+// constructor.
+
+function Log2(messsage: string) {
+  return (constructor: any) => {
+    console.log(messsage + " " + constructor.name);
+  };
+} // Log2 receives a string as an argument and returns a function that receives a constructor function as an argument.
+
+@Log2("Hello")
+class Person2 {
+  constructor(public name: string) {}
+}
+
+const aPerson = new Person2("ChickenFace");
+// Output: Hello Person2
+
+/*  -------------------------------------------------------------------------------------
+                               INSERT INFORMATION INTO THE CONSTRUCTOR
+
+    -   Decorators can be applied to parameters of a class constructor. In this case, the
+    decorator is applied to the constructor function itself. The decorator function is
+    passed the constructor function as an argument.
+    ------------------------------------------------------------------------------------- */
+
+function SetApiVersion(constructor: any) {
+  return class extends constructor {
+    version = "1.0.0";
+  };
+}
+
+@SetApiVersion
+class Program {}
+
+const program = new Program();
+console.log(program); // Output: Program { version: '1.0.0' }
+
+/*  -------------------------------------------------------------------------------------
+    ------------------------------------------------------------------------------------- */
