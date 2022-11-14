@@ -112,8 +112,10 @@ function SetApiVersion(constructor: any) {
 @SetApiVersion
 class Program {}
 
-const program = new Program();
-console.log(program); // Output: Program { version: '1.0.0' }
+const sofware1 = new Program();
+const sofware2 = new Program();
+console.log(sofware1); // Output: Program { version: '1.0.0' }
+console.log(sofware2); // Output: Program { version: '1.0.0' }
 
 /*  -------------------------------------------------------------------------------------
     ------------------------------------------------------------------------------------- */
