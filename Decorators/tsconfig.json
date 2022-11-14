@@ -26,7 +26,7 @@
 
     /* Modules */
     "module": "commonjs" /* Specify what module code is generated. */,
-    "rootDir": "./Configuration/src" /* Specify the root folder within your source files. */,
+    // "rootDir": "./",                                  /* Specify the root folder within your source files. */
     // "moduleResolution": "node",                       /* Specify how TypeScript looks up a file from a given module specifier. */
     // "baseUrl": "./",                                  /* Specify the base directory to resolve non-relative module names. */
     // "paths": {},                                      /* Specify a set of entries that re-map imports to additional lookup locations. */
@@ -49,7 +49,7 @@
     // "emitDeclarationOnly": true,                      /* Only output d.ts files and not JavaScript files. */
     // "sourceMap": true,                                /* Create source map files for emitted JavaScript files. */
     // "outFile": "./",                                  /* Specify a file that bundles all outputs into one JavaScript file. If 'declaration' is true, also designates a file that bundles all .d.ts output. */
-    "outDir": "./Configuration/dist" /* Specify an output folder for all emitted files. */,
+    "outDir": "./dist" /* Specify an output folder for all emitted files. */,
     // "removeComments": true,                           /* Disable emitting comments. */
     // "noEmit": true,                                   /* Disable emitting files from a compilation. */
     // "importHelpers": true,                            /* Allow importing helper functions from tslib once per project, instead of including them per-file. */
@@ -99,15 +99,5 @@
     /* Completeness */
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
-  },
-  // "files": ["index.ts"],
-  // files is an opntion that we put outside of the compiler options because it's a top level option.
-  // we can add files to the files array and it will compile them.
-  // it is best for a small project to use the files array because it is more explicit.
-  "include": ["Configuration/src/**/*"], // this is a glob pattern. it will include all files in the src folder and all subfolders.
-  // "exclude": ["node_modules", "dist"] // this is a glob pattern. it will exclude all files in the node_modules and dist folders. Exclude node_modules is very important, otherwise it will compile all the node_modules files.
-  "exclude": ["Configuration/src/dontTouch.ts"]
-
-  // press ctrl+f and look for "outdir" to see how to compile to a different folder.
-  // press again and look for "rootdir" to set the root directory.
+  }
 }
