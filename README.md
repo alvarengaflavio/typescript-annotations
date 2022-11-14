@@ -25,9 +25,11 @@
    6.1 Open index `index.ts`
 7. Working with Type Declarations `./TypeDeclarations`  
    7.1 Open index `index.ts`
-8. Working with Modules `./Modules`  
+8. Decorators `./Decorators`  
    8.1 Open index `index.ts`
-9. WebPack and TypeScript `./WebPack`  
+9. Working with Modules `./Modules`  
    9.1 Open index `index.ts`
-10. React and TypeScript - TSX `./React`  
+10. WebPack and TypeScript `./WebPack`  
     10.1 Open index `index.ts`
+11. React and TypeScript - TSX `./React`  
+    11.1 Open index `index.ts`
