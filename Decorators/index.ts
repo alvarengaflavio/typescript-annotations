@@ -118,4 +118,17 @@ console.log(sofware1); // Output: Program { version: '1.0.0' }
 console.log(sofware2); // Output: Program { version: '1.0.0' }
 
 /*  -------------------------------------------------------------------------------------
+                                  FINAL CONSIDERATIONS
+
+    Decorators has a lot of uses, but the most common use is to add metadata to a class,
+    method, property, or parameter. Metadata is information about a program that is not
+    part of the program itself. Metadata can be used to add additional information about
+    a class, method, property, or parameter.
+
+    We only scratch the surface of decorators in this section. For more information, see
+    the following resources:
+    -   https://www.typescriptlang.org/docs/handbook/decorators.html
+    -   https://www.typescriptlang.org/docs/handbook/decorators.html#metadata
+
+    Thanks for reading!
     ------------------------------------------------------------------------------------- */
