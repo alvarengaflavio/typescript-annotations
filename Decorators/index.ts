@@ -96,7 +96,7 @@ const aPerson = new Person2("ChickenFace");
 // Output: Hello Person2
 
 /*  -------------------------------------------------------------------------------------
-                               INSERT INFORMATION INTO THE CONSTRUCTOR
+                              INSERT INFORMATION INTO THE CONSTRUCTOR
 
     -   Decorators can be applied to parameters of a class constructor. In this case, the
     decorator is applied to the constructor function itself. The decorator function is
