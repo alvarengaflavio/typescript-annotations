@@ -58,3 +58,22 @@ const classObject = new Person("ChickenFace");
 // Whenever a new instance of the class is created, the decorator function is called. The
 // decorator function can then modify the behavior of the class constructor. In this case,
 // the decorator function logs proprety name of the class to the console.
+
+// If i have a new class for example: Student, the decorator function will be called when
+// a new instance of the Student class is created.
+
+@Log
+class Student {
+  constructor(public name: string) {}
+}
+
+const studentObject = new Student("StudentFace");
+// Output: New: Student
+
+/*  -------------------------------------------------------------------------------------
+                              DECORATORS AS PARAMETERS
+
+    -   Decorators can be applied to parameters of a class constructor. In this case, the
+    decorator is applied to the constructor function itself. The decorator function is
+    passed the constructor function as an argument.
+    ------------------------------------------------------------------------------------- */
